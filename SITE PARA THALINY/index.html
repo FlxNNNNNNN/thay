@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Homenagem ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte personalizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+  <style>
+    body {
+      font-family: 'Quicksand', 'Segoe UI', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      background: #fff0f5;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Corações flutuantes */
+    body::before {
+      content: '❤️ 💕 💖 💘 💝';
+      font-size: 2rem;
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: floating-hearts 12s linear infinite;
+      pointer-events: none;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    @keyframes floating-hearts {
+      0% { top: 100%; transform: translateX(-50%) rotate(0deg); }
+      100% { top: -10%; transform: translateX(-50%) rotate(360deg); }
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #ffe4e1;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .custom-player {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .custom-player button,
+    .custom-player input[type="range"] {
+      background: #d6336c;
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .custom-player button:hover {
+      background: #b02a5e;
+    }
+
+    .custom-player input[type="range"] {
+      width: 100px;
+    }
+
+    #carrossel {
+      width: 90%;
+      max-width: 450px;
+      margin: 20px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 300px;       /* altura fixa para todas as imagens */
+      object-fit: cover;   /* corta para preencher sem distorcer */
+      object-position: center center;
+      border-radius: 12px;
+      border: 3px solid #ffc0cb;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      background: #fff0f5;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #d6336c;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #d6336c;
+    }
+
+    section {
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .declaracao {
+      background: #f8e1ec;
+      padding: 40px 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .marketplace {
+      background: #fff;
+      border: 2px dashed #d6336c;
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 30px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button {
+      background: #d6336c;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s, transform 0.2s;
+      animation: pulse-button 1.5s infinite;
+    }
+
+    button:hover {
+      background: #b02a5e;
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse-button {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    #contador-namoro,
+    #contador-encontro,
+    #contador-intimidade {
+      font-weight: bold;
+      color: #d6336c;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .swiper-slide img {
+        height: 250px;
+      }
+
+      .declaracao, .marketplace {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .marketplace, .declaracao {
+        font-size: 0.95rem;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      #carrossel {
+        width: 100%;
+      }
+
+      .custom-player {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .custom-player input[type="range"] {
+        width: 150px;
+      }
+    }
+    /* Responsividade para iPhone 11 e telas até 414px */
+    @media (max-width: 414px) {
+      /* Carrossel */
+      #carrossel {
+        width: 100%;
+        max-width: 220px;
+        margin: 10px auto;
+        border-radius: 12px;
+      }
+
+      .swiper-slide img {
+        height: 414px;  /* altura menor para celular */
+        object-fit: cover;
+        object-position: center center;
+        border-radius: 12px;
+        border: 3px solid #ffc0cb;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      }
+
+      /* Header */
+      header h1 {
+        font-size: 1.3rem;
+        padding: 0 10px;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      /* Player personalizado */
+      .custom-player {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .custom-player button {
+        font-size: 1rem;
+        padding: 8px 15px;
+      }
+
+      .custom-player input[type="range"] {
+        width: 90%;
+      }
+
+      /* Seções */
+      section, .declaracao, .marketplace {
+        padding: 15px 10px;
+      }
+
+      /* Botão */
+      button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        width: 100%;
+      }
+
+      /* Texto menor para se ajustar melhor */
+      .declaracao, .marketplace {
+        font-size: 1rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Para o amor da minha vida 💖</h1>
+    <br><p>Aperte o botão!</p>
+  <audio id="musica" src="Belo - Vi Amor no Seu Olhar (Lyric Video).mp3"></audio>
+
+  <div class="custom-player">
+    <button onclick="togglePlay()" id="playPauseBtn">▶️</button>
+    <input type="range" min="0" max="1" step="0.01" id="volumeSlider">
+  </div>
+</header>
+
+<section id="carrossel">
+  <div class="swiper">
+     <div class="swiper-wrapper">
+      <!-- Slides com imagens -->
+      <div class="swiper-slide"><img src="fotos/0.jpeg" alt="Foto 0"></div>
+      <div class="swiper-slide"><img src="fotos/2.jpeg" alt="Foto 2"></div>
+      <div class="swiper-slide"><img src="fotos/3.jpeg" alt="Foto 3"></div>
+      <div class="swiper-slide"><img src="fotos/4.jpeg" alt="Foto 4"></div>
+      <div class="swiper-slide"><img src="fotos/5.jpeg" alt="Foto 5"></div>
+      <div class="swiper-slide"><img src="fotos/6.jpeg" alt="Foto 6"></div>
+      <div class="swiper-slide"><img src="fotos/7.jpeg" alt="Foto 7"></div>
+      <div class="swiper-slide"><img src="fotos/8.jpeg" alt="Foto 8"></div>
+      <div class="swiper-slide"><img src="fotos/9.jpeg" alt="Foto 9"></div>
+      <div class="swiper-slide"><img src="fotos/10.jpeg" alt="Foto 10"></div>
+      <div class="swiper-slide"><img src="fotos/11.jpeg" alt="Foto 11"></div>
+      <div class="swiper-slide"><img src="fotos/12.jpeg" alt="Foto 12"></div>
+      <div class="swiper-slide"><img src="fotos/13.jpeg" alt="Foto 13"></div>
+      <div class="swiper-slide"><img src="fotos/14.jpeg" alt="Foto 14"></div>
+      <div class="swiper-slide"><img src="fotos/15.jpeg" alt="Foto 15"></div>
+      
+    </div>
+</section>
+
+<section class="declaracao">
+  <h2>Feliz Dia dos Namorados</h2>
+  <p>
+    Eu amo muito você, gatinha. <br>
+    <p>Que esse seja apenas o primeiro de muitos dias dos namorados para nós.</p>
+    <p>Em um futuro breve, nossas comemorações serão de casamento.</p>
+    <p>Você é especial para mim</p>
+      <br>Seu sorriso é luz e alegria na minha vida.
+      <br>Seu cheiro é a lembrança de momentos felizes no meu dia
+   <br> Sua voz, a lembrança de nossos momentos
+    <br> Te quero para todo sempre!
+    </p>
+</section>
+
+<section>
+  <h2>Nosso amor em dias</h2>
+  <p>Estamos juntos há: <span id="contador-namoro"></span> dias</p>
+  <p>Desde nosso primeiro encontro: <span id="contador-encontro"></span> dias</p>
+  <p>Desde aquele dia que o GG se apaixonou pela princesa 😏: <span id="contador-intimidade"></span> dias</p>
+</section>
+
+<section class="marketplace">
+<h1></h1>
+  <h2>Oferta do dia!</h2>
+  <h1>Edição Limitada: Namorado Branquelo</h2>
+  <p>Produto exclusivo, feito sob medida para você!</p>
+  <br>
+  <p>Vem com respeito, carinho, beijos, companheirismo, amor eterno 💞</p>
+  <p>...e aquele pau que você ama sentar! 🔥</p>
+  <button onclick="adicionarAoCarrinho()">Comprar!</button>
+  <p id="mensagem-final"></p>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  // Carrossel
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: { delay: 5000 },
+    pagination: { el: '.swiper-pagination' },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  });
+
+  // Dias desde
+  function diasDesde(dataStr) {
+    const hoje = new Date();
+    const data = new Date(dataStr);
+    const diff = hoje - data;
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
+  }
+
+  document.getElementById("contador-namoro").textContent = diasDesde("2024-12-21");
+  document.getElementById("contador-encontro").textContent = diasDesde("2024-06-21");
+  document.getElementById("contador-intimidade").textContent = diasDesde("2024-07-06");
+
+  // Player personalizado
+  const musica = document.getElementById("musica");
+  const playPauseBtn = document.getElementById("playPauseBtn");
+  const volumeSlider = document.getElementById("volumeSlider");
+
+  musica.loop = true;
+  musica.volume = 0.5;
+
+  function togglePlay() {
+    if (musica.paused) {
+      musica.play();
+      playPauseBtn.textContent = "⏸️";
+    } else {
+      musica.pause();
+      playPauseBtn.textContent = "▶️";
+    }
+  }
+
+  volumeSlider.addEventListener("input", () => {
+    musica.volume = volumeSlider.value;
+  });
+
+  // Carrinho
+  function adicionarAoCarrinho() {
+    const msg = "Quero você, gostoso! ❤️";
+    window.open("https://wa.me/61994285130?text=" + encodeURIComponent(msg), "_blank");
+    alert("Compra finalizada, em processo de entrega... 🚚💘");
+  }
+</script>
+
+</body>
+</html>
